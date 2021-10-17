@@ -73,6 +73,10 @@ export class AppComponent implements OnInit {
   }
 
   searchByTextFilter() {
+    //Setting Male and Female Filter to Default state
+    this.maleFilter = true;
+    this.femaleFilter = true;
+
     if (this.searchFilterText == '') {
       this.currentData = this.data;
       return;
@@ -137,6 +141,7 @@ export class AppComponent implements OnInit {
     new_entry['email'] = this.createEmail;
     new_entry['gender'] = this.createGender;
     this.data.push(new_entry);
+    this.showSuccessMessage();
     this.currentData = this.data;
     this.clearForm();
   }
@@ -146,5 +151,39 @@ export class AppComponent implements OnInit {
     this.createLastName = '';
     this.createEmail = '';
     this.createGender = 'Male';
+  }
+
+  showSuccessMessage() {
+    this.isError = false;
+    this.message = 'Entry created sucessfully!!!';
+    this.showMessage = true;
+    setTimeout(() => {
+      this.showMessage = false;
+      this.message = '';
+    }, 1500);
+  }
+
+  sort(field: any, direction: any) {
+    if (field == 'fname') {
+      if (direction == 'asc') {
+        this.currentData.sort((a, b) => {
+          return a.first_name.localeCompare(b.first_name, 'en');
+        });
+      } else if (direction == 'dsc') {
+        this.currentData.sort((a, b) => {
+          return b.first_name.localeCompare(a.first_name, 'en');
+        });
+      }
+    } else if (field == 'lname') {
+      if (direction == 'asc') {
+        this.currentData.sort((a, b) => {
+          return a.last_name.localeCompare(b.last_name, 'en');
+        });
+      } else if (direction == 'dsc') {
+        this.currentData.sort((a, b) => {
+          return b.last_name.localeCompare(a.last_name, 'en');
+        });
+      }
+    }
   }
 }

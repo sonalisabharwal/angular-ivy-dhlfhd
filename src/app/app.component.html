@@ -34,8 +34,36 @@
     <thead>
       <tr class="table-heading">
         <th scope="col">#</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
+        <th scope="col">
+          First Name
+          <i
+            class="fa fa-arrow-down ml-1"
+            aria-hidden="true"
+            title="Asc"
+            (click)="sort('fname', 'asc')"
+          ></i>
+          <i
+            class="fa fa-arrow-up ml-1"
+            aria-hidden="true"
+            title="Desc"
+            (click)="sort('fname', 'dsc')"
+          ></i>
+        </th>
+        <th scope="col">
+          Last Name
+          <i
+            class="fa fa-arrow-down ml-1"
+            aria-hidden="true"
+            title="Asc"
+            (click)="sort('lname', 'asc')"
+          ></i>
+          <i
+            class="fa fa-arrow-up ml-1"
+            aria-hidden="true"
+            title="Desc"
+            (click)="sort('lname', 'dsc')"
+          ></i>
+        </th>
         <th scope="col">Email</th>
         <th scope="col">Gender</th>
       </tr>
@@ -51,7 +79,14 @@
 </div>
 
 <h4 class="ml-2">Add New Candidate</h4>
-<div class="row">
+<div
+  *ngIf="showMessage"
+  class="mt-2 message"
+  [ngClass]="{ errorMsg: isError, successMsg: !isError }"
+>
+  {{ message }}
+</div>
+<div class="row mt-2">
   <div class="col-6">
     <input
       type="text"
@@ -104,12 +139,4 @@
   <div class="col">
     <div class="add-btn" (click)="add()">Add</div>
   </div>
-</div>
-
-<div
-  *ngIf="showMessage"
-  class="mt-2 message"
-  [ngClass]="{ errorMsg: isError, successMsg: !isError }"
->
-  {{ message }}
 </div>

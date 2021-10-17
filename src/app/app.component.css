@@ -47,7 +47,7 @@ p {
   margin-left: 5px;
   color: white;
   width: 50%;
-  padding: 5px;
+  padding: 3px;
 }
 
 .successMsg {
@@ -56,4 +56,8 @@ p {
 
 .errorMsg {
   background: red;
+}
+
+i {
+  cursor: pointer;
 }
