@@ -61,3 +61,7 @@ p {
 i {
   cursor: pointer;
 }
+
+.alternate-row {
+  background: #d3d3d340;
+}
